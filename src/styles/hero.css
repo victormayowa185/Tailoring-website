@@ -1,0 +1,284 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  /* Blur container */
+  .blur {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden !important;
+    z-index: 0;
+  }
+
+  /* Background layer with blur */
+  .blur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/back.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(1px) brightness(80%);
+    z-index: 1;
+
+  }
+
+  /* Content wrapper - ABOVE the blur */
+  .blur-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .hero-line {
+    width: 70px;
+    height: 4px;
+    background-color: #f2cf6d;
+    border-radius: 10px;
+  }
+
+
+
+  .heroc {
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    width: 280px;
+    height: auto;
+    z-index: 3;
+  }
+
+  .hero {
+    font-family: roboto, sans-serif;
+    letter-spacing: 2px;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1.4;
+  }
+
+  .heropic {
+    position: absolute;
+    bottom: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 90%;
+    width: auto;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .heropicc {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    border-bottom-right-radius: 200px;
+    border-bottom-left-radius: 100px;
+    overflow: hidden;
+  }
+
+  .sub {
+    position: absolute;
+    top: 60%;
+    right: -25%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 3;
+    width: max-content;
+    align-items: flex-start;
+  }
+
+  .mini-row {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+
+
+  .sub-text {
+    font-family: roboto, sans-serif;
+    width: 40%;
+    color: rgba(245, 245, 245, 0.785);
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+    display: flex;
+    position: absolute;
+    gap: 5px;
+    top: 98%;
+    z-index: 3;
+    border: none;
+  }
+
+
+
+
+  .button:hover {
+    color: white;
+  }
+
+  .button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #f2cf6d;
+    transition: width 0.3s ease;
+  }
+
+  .button:hover::after {
+    width: 80%;
+  }
+
+
+
+  .m1 {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    border-right: 2px solid lightgoldenrodyellow;
+  }
+
+  .m2 {
+    width: 130px;
+    height: 100px;
+    object-fit: fill;
+    border-radius: 5px;
+    border-left: 2px solid lightgoldenrodyellow;
+  }
+
+  #h2 {
+    font-size: 12px;
+    width: 100%;
+    color: whitesmoke;
+    position: absolute;
+    top: 100%;
+    left: 2%;
+    text-align: left;
+    font-family: roboto;
+    font-weight: 200;
+
+  }
+
+
+
+  .last {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+  }
+
+  .last h2 {
+    font-weight: 350;
+    color: orange;
+    font-family: roboto, sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .last p {
+    margin-top: 0;
+    font-size: 18px;
+    width: 65%;
+    text-align: center;
+    line-height: 1.8;
+    font-family: roboto, sans-serif;
+    font-weight: 700;
+    color: black;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+    background-color: rgba(211, 211, 211, 0.493);
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+  }
+
+
+
+
+
+
+
+  @media (max-width:) {}
+
+
+
+  @media (max-width: 900px) {
+    .heroc {
+      position: absolute;
+      top: 25%;
+      left: 9%;
+
+    }
+
+    .hero {
+      font-size: 1.5rem;
+    }
+
+    .sub {
+      position: absolute;
+      top: 50%;
+      left: 9%;
+      right: auto;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    h2 {
+      color: white;
+      text-align: center;
+    }
+
+    #h2 {
+      font-size: 14px;
+      width: 100%;
+      color: whitesmoke;
+      position: absolute;
+      top: 100%;
+      left: 2%;
+      text-align: left;
+      font-weight: 200;
+    }
+
+    .bu {
+      position: absolute;
+      top: 80%;
+      left: 10%;
+      right: auto;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .heropic img {
+      filter: blur(1px) brightness(70%);
+    }
+  }
+}
