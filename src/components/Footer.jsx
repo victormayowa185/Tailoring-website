@@ -12,14 +12,14 @@ function Footer() {
         >
           <path
             d="M0,40 C240,80 480,0 720,20 960,40 1200,80 1440,30 L1440,0 L0,0 Z"
-            fill="white"
+            fill="#262d6bf5"
           />
         </svg>
       </div>
 
       {/* Content */}
       <div className="footer-content">
-        <p>© 2026 VM Tailoring. All rights reserved.</p>
+        <p>© 2026 Mayowa Dev. All rights reserved.</p>
 
         <div className="footer-links">
           <a href="/services">Services</a>

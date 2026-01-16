@@ -21,7 +21,7 @@
     align-items: center;
     padding: 12px 10%;
     background-color: transparent !important;  /* transparent */
-    border-bottom: 1px solid rgba(207, 198, 180, 0.411); /* light white separator */
+    border-bottom: 1px solid #ffd9003e; /* light white separator */
   }
 
   /* Social Icons - LEFT */
@@ -47,7 +47,7 @@
   }
 
   .social-icon:hover {
-    background-color: grey;
+    background-color: #FFD700;
     border-color: grey;
     transform: scale(1.1);
   }
@@ -87,7 +87,7 @@
   }
 
   .search-icon:hover {
-    color: grey;
+    color: #FFD700;
   }
 
   .contact-btn {
@@ -101,7 +101,7 @@
   }
 
   .contact-btn:hover {
-    background-color: grey;
+    background-color: #FFD700;
     transform: translateY(-1px);
     
   }

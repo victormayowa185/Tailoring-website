@@ -191,9 +191,9 @@
 
   .last h2 {
     font-weight: 350;
-    color: orange;
-    font-family: roboto, sans-serif;
-    font-size: 20px;
+    color: #FFD700;
+    font-family: roboto;
+    font-size: 17px;
     margin-bottom: 20px;
   }
 

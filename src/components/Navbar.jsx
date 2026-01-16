@@ -1,11 +1,29 @@
 // src/components/Navbar.jsx
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import '../styles/navbar.css';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const location = useLocation();
+  
+  // Add page class to body based on current route
+  useEffect(() => {
+    // Remove all page classes
+    document.body.classList.remove('page-home', 'page-about', 'page-services', 'page-other');
+    
+    // Add class based on current page
+    if (location.pathname === '/') {
+      document.body.classList.add('page-home');
+    } else if (location.pathname === '/about') {
+      document.body.classList.add('page-about');
+    } else if (location.pathname === '/services') {
+      document.body.classList.add('page-services');
+    } else {
+      document.body.classList.add('page-other');
+    }
+  }, [location]);
+  
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   return (
