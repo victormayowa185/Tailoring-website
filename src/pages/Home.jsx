@@ -52,9 +52,14 @@ export default function Home() {
           I create professional, stylish tailoring designs with precision and creativity.
           Explore my catalogue and book a fitting session today.
           Every stitch here is an ode to quality, fit, and elegance.
+
+          From minor adjustments to complete transformations, our alteration services guarantee that every piece of clothing fits you like a glove. Trust us for impeccable alterations that enhance your wardrobe.
         </p>
       </div>
 
+
+
     </div>
+
   );
 }

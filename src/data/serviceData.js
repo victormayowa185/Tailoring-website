@@ -1,6 +1,6 @@
   // src/data/servicesData.js
 
-  import suit1 from "../assets/services/suit1.png";
+  import suit1 from "../assets/services/suit1.webp";
   import suit2 from "../assets/services/suit2.png";
   import suit3 from "../assets/services/suit3.png";
   import women1 from "../assets/services/womanabgada.png";

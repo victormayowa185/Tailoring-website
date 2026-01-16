@@ -215,7 +215,7 @@
   html,
   body {
     overflow-x: hidden;
-    background-color: rgba(211, 211, 211, 0.493);
+    background-color: white;
     margin: 0;
     padding: 0;
     max-width: 100vw;

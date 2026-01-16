@@ -4,9 +4,13 @@ import "../styles/service.css";
 const ServiceCard = ({ src, label, category, className }) => {
   return (
     <div className={`service-card ${className}`}>
-      
+
       {/* Image */}
-      <img src={src} alt={label} />
+      <img
+        src={src}
+        alt={label}
+      />
+
 
       {/* Overlay */}
       <div className="card-overlay"></div>
