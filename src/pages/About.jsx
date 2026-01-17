@@ -1,8 +1,52 @@
-// src/pages/About.jsx - CORRECTED VERSION
-import React from 'react';
-import '../styles/about.css';  // ✅ Correct path to CSS
+import React, { useEffect, useRef } from 'react';
+import '../styles/about.css';
 
 const About = () => {
+  // Refs for scroll animations
+  const textBlockRef = useRef(null);
+  const leftImageRef = useRef(null);
+  const rightImageRef = useRef(null);
+  const storyContentRef = useRef(null);
+  const modelImageRef = useRef(null);
+  const statsRefs = useRef([]);
+
+  // Scroll animation effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    // Observe all elements
+    const elements = [
+      textBlockRef.current,
+      leftImageRef.current,
+      rightImageRef.current,
+      storyContentRef.current,
+      modelImageRef.current,
+      ...statsRefs.current.filter(Boolean)
+    ];
+
+    elements.forEach(element => {
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      elements.forEach(element => {
+        if (element) observer.unobserve(element);
+      });
+    };
+  }, []);
+
   return (
     <section className="about-section">
       {/* Top accent (small aesthetic color) */}
@@ -10,10 +54,9 @@ const About = () => {
 
       {/* Top Section: Three Columns */}
       <div className="about-top-grid">
-
         {/* Left Column: Text Block */}
         <div className="top-left-col">
-          <div className="text-block">
+          <div ref={textBlockRef} className="text-block">
             <div className="accent-line"></div>
             <h2 className="section-heading">
               Best Style, <span className="highlight">Great Concept</span>
@@ -26,7 +69,7 @@ const About = () => {
 
         {/* Middle Column: Close-up Image */}
         <div className="top-middle-col">
-          <div className="image-container">
+          <div ref={leftImageRef} className="image-container">
             <img
               src="https://t4.ftcdn.net/jpg/01/58/76/51/360_F_158765189_xE0PGsWoMcMZXact8LZdsLg7x8COin4V.jpg"
               alt="Close-up of premium suit detailing"
@@ -41,9 +84,9 @@ const About = () => {
 
         {/* Right Column: Process Image */}
         <div className="top-right-col">
-          <div className="image-container">
+          <div ref={rightImageRef} className="image-container">
             <img
-                src="https://plus.unsplash.com/premium_photo-1747508841967-96397061cbb0?q=100&w=800&auto=format&fit=crop"
+              src="https://plus.unsplash.com/premium_photo-1747508841967-96397061cbb0?q=100&w=800&auto=format&fit=crop"
               alt="Tailor measuring fabric precisely"
               className="about-image"
               loading="lazy"
@@ -57,10 +100,9 @@ const About = () => {
 
       {/* Bottom Section: Two Columns */}
       <div className="about-bottom-grid">
-
         {/* Left Column: Brand Story */}
         <div className="bottom-left-col">
-          <div className="content-block">
+          <div ref={storyContentRef} className="content-block">
             <h3 className="content-heading">
               Crafting Excellence Since 2010
             </h3>
@@ -95,7 +137,7 @@ const About = () => {
 
         {/* Right Column: Model Image */}
         <div className="bottom-right-col">
-          <div className="image-container large">
+          <div ref={modelImageRef} className="image-container large">
             <img
               src="https://images.unsplash.com/photo-1505022610485-0249ba5b3675?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
               alt="Confident model wearing custom-tailored suit"
@@ -113,22 +155,21 @@ const About = () => {
       {/* Stats Counter */}
       <div className="stats-section">
         <div className="stats-container">
-          <div className="stat-item">
-            <span className="stat-number">2,500+</span>
-            <span className="stat-label">Satisfied Clients</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">14</span>
-            <span className="stat-label">Years Experience</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">98%</span>
-            <span className="stat-label">Perfect Fit Rate</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">50+</span>
-            <span className="stat-label">Fabric Options</span>
-          </div>
+          {[
+            { number: "2,500+", label: "Satisfied Clients" },
+            { number: "14", label: "Years Experience" },
+            { number: "98%", label: "Perfect Fit Rate" },
+            { number: "50+", label: "Fabric Options" }
+          ].map((stat, index) => (
+            <div 
+              key={index}
+              ref={el => statsRefs.current[index] = el}
+              className="stat-item"
+            >
+              <span className="stat-number">{stat.number}</span>
+              <span className="stat-label">{stat.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

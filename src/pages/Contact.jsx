@@ -323,7 +323,7 @@ const Contact = () => {
                         <div ref={testimonialRef} className="testimonial-card">
                             <div className="testimonial-content">
                                 <p className="quote">
-                                    "It all took a detailto make all the difference.
+                                    "It all took a detail explanation to make all the difference.
                                     My Anakara fits like it was painted on!"
                                 </p>
                                 <div className="testimonial-author">

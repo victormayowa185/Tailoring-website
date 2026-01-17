@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-
-  /* Blur container */
+  /* Video container */
   .blur {
     position: relative;
     width: 100%;
@@ -13,24 +12,37 @@
     z-index: 0;
   }
 
-  /* Background layer with blur */
-  .blur::before {
-    content: '';
+  /* Video background */
+  .video-background {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../assets/back.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(1px) brightness(80%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: 1;
-
+    filter: brightness(110%) contrast(100%);
   }
 
-  /* Content wrapper - ABOVE the blur */
+  /* Overlay for better text readability */
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Content wrapper - ABOVE the video */
   .blur-content {
     position: relative;
     width: 100%;
@@ -46,8 +58,6 @@
     border-radius: 10px;
   }
 
-
-
   .heroc {
     position: absolute;
     top: 35%;
@@ -60,13 +70,15 @@
   .hero {
     font-family: mulish;
     letter-spacing: -0.2px;
-    color: rgb(16, 9, 62);
+    color: white;
     font-size: 2.3rem;
     line-height: 1.4;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 
   .hassan {
-    color: white;
+    color: #f2cf6d;
+    font-weight: 700;
   }
 
   .heropic {
@@ -107,12 +119,11 @@
     gap: 8px;
   }
 
-
-
   .sub-text {
     font-family: mulish;
     width: 40%;
     color: white;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   }
 
   .button {
@@ -128,13 +139,12 @@
     top: 98%;
     z-index: 3;
     border: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
   }
 
-
-
-
   .button:hover {
-    color: white;
+    color: #f2cf6d;
   }
 
   .button::after {
@@ -153,14 +163,13 @@
     width: 80%;
   }
 
-
-
   .m1 {
     width: 80px;
     height: 100px;
     object-fit: cover;
     border-radius: 5px;
-    border-right: 2px solid lightgoldenrodyellow;
+    border-right: 2px solid rgba(242, 207, 109, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 
   .m2 {
@@ -168,7 +177,8 @@
     height: 100px;
     object-fit: fill;
     border-radius: 5px;
-    border-left: 2px solid lightgoldenrodyellow;
+    border-left: 2px solid rgba(242, 207, 109, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 
   #h2 {
@@ -181,10 +191,7 @@
     text-align: left;
     font-family: roboto;
     font-weight: 200;
-
   }
-
-
 
   .last {
     display: flex;
@@ -192,6 +199,7 @@
     justify-content: center;
     align-items: center;
     padding: 80px 20px;
+    background: whitesmoke;
   }
 
   .last h2 {
@@ -227,14 +235,12 @@
     max-width: 100vw;
   }
 
-
   @media(max-width:1000px) {
     .heroc {
       position: absolute;
       top: 24%;
       left: 9%;
       width: 50%;
-
     }
 
     .hero {
@@ -277,11 +283,7 @@
       font-weight: 400;
       color: black;
     }
-
   }
-
-
-
 
   @media(max-width:600px) {
     .heroc {
@@ -289,7 +291,6 @@
       top: 19%;
       left: 9%;
       width: 83%;
-
     }
 
     .hero {
@@ -332,12 +333,7 @@
       font-weight: 400;
       color: black;
     }
-
-
   }
-
-
-
 
   @media (max-width: 400px) {
     .heroc {
@@ -345,7 +341,6 @@
       top: 14%;
       left: 9%;
       width: 94%;
-
     }
 
     .hero {
@@ -387,13 +382,11 @@
       font-family: mulish;
       font-weight: 400;
       color: black;
-
-      .last h2 {
-        
-        font-size: 10px;
-        margin-bottom: 20px;
-      }
     }
 
+    .last h2 {
+      font-size: 10px;
+      margin-bottom: 20px;
+    }
   }
 }
