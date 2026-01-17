@@ -62,7 +62,7 @@ const Gallery = () => {
             
             {/* Header */}
             <div className="gallery-header">
-                <h1>Tailoring Gallery</h1>
+                <h1>Hassan Tailoring Gallery</h1>
                 <p>
                     Explore our collection of bespoke creations. From traditional Ankara
                     to modern suits, each piece showcases exceptional craftsmanship and

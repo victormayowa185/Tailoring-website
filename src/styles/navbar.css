@@ -22,8 +22,7 @@
     padding: 12px 10%;
     background-color: transparent !important;
     /* transparent */
-    border-bottom: 1px solid #ffd9003e;
-    /* light white separator */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.753);
   }
 
   /* Social Icons - LEFT */

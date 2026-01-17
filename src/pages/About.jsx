@@ -66,7 +66,7 @@ const About = () => {
             </h3>
             <div className="story-text">
               <p>
-                At our atelier, every stitch tells a story. Founded with a passion for
+                At <b>Hassan Tailoring</b> our atelier, every stitch tells a story. Founded with a passion for
                 bespoke tailoring, we blend timeless techniques with modern aesthetics
                 to create garments that fit not just your body, but your lifestyle.
               </p>

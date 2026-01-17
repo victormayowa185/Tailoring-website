@@ -176,7 +176,7 @@ const Services = () => {
         
         {/* Header */}
         <div className="services-header">
-          <span className="services-pill">Masterful Craftsmanship</span>
+          <span className="services-pill"> Hassan Tailoring Craftsmanship</span>
           <h1>Our Tailoring Excellence</h1>
           <p>
             Where artistry meets precision. Each garment is a testament to 
