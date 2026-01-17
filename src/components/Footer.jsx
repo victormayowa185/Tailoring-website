@@ -20,7 +20,7 @@ function Footer() {
       <div className="footer-container">
 
         <div className="copyright">
-          © {new Date().getFullYear()} VM Tailoring. All rights reserved.
+          © {new Date().getFullYear()} Victor Mayowa Dev. All rights reserved.
         </div>
 
         <div className="legal-links">
@@ -39,7 +39,7 @@ function Footer() {
 
         <div className="contact">
           <a href="mailto:hello@vmtailoring.com">
-            hello@vmtailoring.com
+            victormayowa185@gmail.com
           </a>
         </div>
 
