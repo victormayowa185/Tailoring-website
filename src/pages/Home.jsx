@@ -2,6 +2,8 @@ import "../styles/hero.css";
 import mini1 from "../assets/mini1.jpg";
 import mini2 from "../assets/mini2.jpg";
 
+
+
 export default function Home() {
   return (
     <div className="home-root">

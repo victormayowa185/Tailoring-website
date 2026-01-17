@@ -99,7 +99,7 @@
 }
 
 .accent-line {
-  width: 60px;
+  width: 100px;
   height: 4px;
   background: #FFD700;
   margin-bottom: 25px;
@@ -224,8 +224,8 @@
 }
 
 .secondary-btn:hover {
-  border-color: #FFD700;
-  color: #FFD700;
+  border-color: blue;
+  color: blue;
   transform: translateY(-2px);
 }
 

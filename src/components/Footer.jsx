@@ -3,29 +3,46 @@ import "../styles/footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      
-      {/* SVG Curve */}
-      <div className="footer-curve">
-        <svg
-          viewBox="0 0 1440 90"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,40 C240,80 480,0 720,20 960,40 1200,80 1440,30 L1440,0 L0,0 Z"
-            fill="#262d6bf5"
-          />
-        </svg>
-      </div>
 
-      {/* Content */}
-      <div className="footer-content">
-        <p>© 2026 Mayowa Dev. All rights reserved.</p>
+      {/* TOP WAVE */}
+      <svg
+        className="footer-wave"
+        viewBox="0 0 1440 170"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,80 C240,20 480,20 720,80 960,140 1200,140 1440,80 L1440,0 L0,0 Z"
+          fill="whitesmoke"
+        />
+      </svg>
 
-        <div className="footer-links">
-          <a href="/services">Services</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
+      {/* CONTENT */}
+      <div className="footer-container">
+
+        <div className="copyright">
+          © {new Date().getFullYear()} VM Tailoring. All rights reserved.
         </div>
+
+        <div className="legal-links">
+          <a href="/privacy">Privacy Policy</a>
+          <span className="divider">•</span>
+          <a href="/accessibility">Accessibility</a>
+          <span className="divider">•</span>
+          <a href="/terms">Terms</a>
+        </div>
+
+        <div className="social-media">
+          <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+          <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+        </div>
+
+        <div className="contact">
+          <a href="mailto:hello@vmtailoring.com">
+            hello@vmtailoring.com
+          </a>
+        </div>
+
       </div>
     </footer>
   );
