@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+.services-top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background-color: #262d6bf5;
+  z-index: 0;
+}
+
 
 
 .stack-controls {
@@ -77,9 +86,9 @@
 .services-section {
   position: relative;
   min-height: 100vh;
-  padding: 180px 20px 80px;
+  padding: 180px 90px 80px;
   background-color: whitesmoke;
-  font-family: 'Inter', sans-serif;
+  font-family: mulish;
 }
 
 /* Top accent */
@@ -108,6 +117,7 @@
 
 /* ===== HEADER ===== */
 .services-header {
+  font-family: mulish;
   text-align: center;
   margin-bottom: 4rem;
   padding: 0 1rem;
@@ -142,11 +152,11 @@
   color: #111827;
   margin-bottom: 1.5rem;
   line-height: 1.1;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.9px;
 }
 
 .services-header p {
-  font-family: 'Inter', sans-serif;
+  font-family: mulish;
   font-weight: 400;
   font-size: 1.2rem;
   color: #6b7280;
@@ -159,7 +169,7 @@
 .feature-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 50px;
+  gap: 90px;
   margin-bottom: 80px;
 }
 
@@ -231,7 +241,7 @@
 }
 
 .stack-caption h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: mulish;
   font-weight: 600;
   font-size: 1.5rem;
   color: #111827;
@@ -239,7 +249,7 @@
 }
 
 .stack-caption p {
-  font-family: 'Inter', sans-serif;
+  font-family: mulish;
   font-weight: 400;
   color: #6b7280;
   font-size: 0.95rem;
@@ -259,12 +269,23 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: all 0.4s ease;
   border: 1px solid #e5e7eb;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.service-card.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
   border-color: var(--card-color, #F7D242);
+}
+
+.service-card.visible:hover {
+  transform: translateY(-10px);
 }
 
 .card-image {
@@ -307,7 +328,7 @@
 }
 
 .card-content h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: mulish;
   font-weight: 600;
   font-size: 1.8rem;
   color: #111827;
@@ -315,7 +336,7 @@
 }
 
 .card-description {
-  font-family: 'Inter', sans-serif;
+  font-family: mulish;
   font-weight: 400;
   color: #6b7280;
   line-height: 1.7;
@@ -330,7 +351,7 @@
 }
 
 .card-features li {
-  font-family: 'Inter', sans-serif;
+  font-family: mulish;
   font-weight: 500;
   color: #374151;
   margin-bottom: 0.8rem;
@@ -347,13 +368,13 @@
 }
 
 .inquiry-btn {
-  width: 100%;
+  width: 50%;
   padding: 15px;
-  background: linear-gradient(135deg, var(--card-color, #F7D242) 0%, #f2cf6d 100%);
-  color: #111827;
+  background: linear-gradient(90deg, var(--card-color, #0d134a) 0%, #f2cf6d 100%);
+  color: white;
   border: none;
   border-radius: 0.8rem;
-  font-family: 'Inter', sans-serif;
+  font-family: mulish;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
@@ -408,12 +429,24 @@
   border-radius: 1rem;
   border: 2px solid #e5e7eb;
   transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 2s ease;
+}
+
+.process-step.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .process-step:hover {
   border-color: #F7D242;
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(247, 210, 66, 0.1);
+}
+
+.process-step.visible:hover {
+  transform: translateY(-5px);
 }
 
 .step-number {
@@ -425,7 +458,7 @@
 }
 
 .step-content h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: mulish;
   font-weight: 600;
   color: #111827;
   margin-bottom: 0.5rem;
@@ -433,7 +466,7 @@
 }
 
 .step-content p {
-  font-family: 'Inter', sans-serif;
+  font-family: mulish;
   font-weight: 400;
   color: #6b7280;
   font-size: 0.9rem;
@@ -473,7 +506,7 @@
 
 @media (max-width: 768px) {
   .services-section {
-    padding: 140px 15px 60px;
+    padding: 70px 15px 60px;
   }
 
   .services-header h1 {
@@ -499,6 +532,11 @@
 }
 
 @media (max-width: 576px) {
+   .services-section {
+    padding: 60px 15px 60px;
+  }
+
+
   .services-header h1 {
     font-size: 2rem;
   }
@@ -527,29 +565,4 @@
   .card-content {
     padding: 1.5rem;
   }
-}
-
-/* Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.service-card {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.service-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.service-card:nth-child(3) {
-  animation-delay: 0.4s;
 }

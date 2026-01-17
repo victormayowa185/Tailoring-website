@@ -4,7 +4,7 @@
   background: #0d134a;
   color: #fff;
   padding-top: 120px; /* SPACE FOR WAVE */
-  font-family: 'Inter', sans-serif;
+font-family: mulish;
   overflow: hidden; /* keep wave clean */
 }
 
@@ -34,6 +34,7 @@
 
 /* COPYRIGHT */
 .copyright {
+  font-family: mulish;
   font-size: 0.9rem;
   color: #d1d5db;
 }
@@ -50,6 +51,7 @@
 .legal-links a {
   color: #d1d5db;
   text-decoration: none;
+  font-family: mulish;
   font-size: 0.85rem;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -94,6 +96,7 @@
 .contact a {
   color: #9ca3af;
   text-decoration: none;
+  font-family: mulish;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }

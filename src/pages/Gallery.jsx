@@ -62,7 +62,6 @@ const Gallery = () => {
             
             {/* Header */}
             <div className="gallery-header">
-                <span className="gallery-pill">Our Portfolio</span>
                 <h1>Tailoring Gallery</h1>
                 <p>
                     Explore our collection of bespoke creations. From traditional Ankara

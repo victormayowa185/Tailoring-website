@@ -16,7 +16,9 @@ export default function Home() {
           <div className="heroc">
             <div className="hero-line"></div>
             <h1 className="hero">
-              Custom Tailor For Your Fashion Style Fit
+              <span className="hassan">
+                Hassan Design
+                </span> Custom Tailor For Your Fashion Style Fit
             </h1>
           </div>
 

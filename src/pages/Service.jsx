@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/service.css';
 
 const Services = () => {
@@ -75,6 +75,10 @@ const Services = () => {
     }
   ]);
 
+  // Refs for scroll animations
+  const serviceCardsRef = useRef([]);
+  const processStepsRef = useRef([]);
+
   // Function to bring clicked image to front
   const bringToFront = (clickedId) => {
     setStackedImages(prev => {
@@ -125,6 +129,42 @@ const Services = () => {
       });
     });
   };
+
+  // Scroll animation effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    // Observe service cards
+    serviceCardsRef.current.forEach(card => {
+      if (card) observer.observe(card);
+    });
+
+    // Observe process steps
+    processStepsRef.current.forEach(step => {
+      if (step) observer.observe(step);
+    });
+
+    return () => {
+      serviceCardsRef.current.forEach(card => {
+        if (card) observer.unobserve(card);
+      });
+      processStepsRef.current.forEach(step => {
+        if (step) observer.unobserve(step);
+      });
+    };
+  }, []);
 
   return (
     <section className="services-section">
@@ -186,11 +226,12 @@ const Services = () => {
             </div>
           </div>
 
-          {/* Right Column - Services Cards */}
+          {/* Right Column - Services Cards with animation */}
           <div className="services-cards">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <div 
                 key={service.id} 
+                ref={el => serviceCardsRef.current[index] = el}
                 className="service-card"
                 style={{ '--card-color': service.color }}
               >
@@ -219,7 +260,7 @@ const Services = () => {
                   </ul>
                   
                   <button className="inquiry-btn">
-                    Request Design Consultation
+                    Book a Fitting
                     <span className="btn-icon">→</span>
                   </button>
                 </div>
@@ -240,7 +281,11 @@ const Services = () => {
               { number: '04', title: 'Pattern Making', desc: 'Custom pattern creation' },
               { number: '05', title: 'Fitting & Delivery', desc: 'Perfect fit guarantee' }
             ].map((step, index) => (
-              <div key={index} className="process-step">
+              <div 
+                key={index} 
+                ref={el => processStepsRef.current[index] = el}
+                className="process-step"
+              >
                 <div className="step-number">{step.number}</div>
                 <div className="step-content">
                   <h4>{step.title}</h4>

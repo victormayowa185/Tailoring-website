@@ -14,9 +14,9 @@
   background-color: whitesmoke;
   /* Light background as per your choice */
   color: black;
-  padding: 200px 20px 80px;
+  padding: 200px 80px 80px;
   /* ✅ FIXED: 140px top padding for navbar */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: mulish;
   margin-top: 0;
   position: relative;
   z-index: 1;
@@ -120,6 +120,7 @@
 }
 
 .subheading {
+  font-family: mulish;
   font-size: 1.1rem;
   line-height: 1.6;
   color: black;
@@ -151,6 +152,7 @@
 }
 
 .story-text {
+  font-family: mulish;
   font-size: 1.05rem;
   line-height: 1.8;
   color: black;
@@ -196,6 +198,7 @@
 .primary-btn,
 .secondary-btn {
   padding: 14px 32px;
+  font-family: mulish;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 8px;
@@ -250,6 +253,7 @@
 
 .stat-number {
   display: block;
+  font-family: mulish;
   font-size: 3rem;
   font-weight: 800;
   color: #FFD700;
@@ -258,6 +262,7 @@
 }
 
 .stat-label {
+  font-family: mulish;
   font-size: 0.95rem;
   color: black;
   text-transform: uppercase;
