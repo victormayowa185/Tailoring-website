@@ -84,10 +84,10 @@ const About = () => {
             </div>
             <div className="cta-group">
               <button className="primary-btn">
-                Book a Consultation
+                Book a Fitting
               </button>
               <button className="secondary-btn">
-                View Our Portfolio
+                View Our Gallery
               </button>
             </div>
           </div>
