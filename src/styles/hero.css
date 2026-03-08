@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer components {
+
   /* Video container */
   .blur {
     position: relative;
@@ -33,12 +34,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.1) 50%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.3) 100%);
     z-index: 1;
   }
 
@@ -81,6 +80,7 @@
     font-weight: 700;
   }
 
+  
   .heropic {
     position: absolute;
     bottom: -50%;
@@ -204,9 +204,9 @@
 
   .last h2 {
     font-weight: 650;
-    color: rgb(16, 9, 62);
+    color: rgb(65, 30, 5);
     font-family: mulish;
-    font-size: 20px;
+    font-size: 40px;
     margin-bottom: 20px;
   }
 

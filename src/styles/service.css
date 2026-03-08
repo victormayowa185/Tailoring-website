@@ -4,7 +4,6 @@
   left: 0;
   width: 100%;
   height: 160px;
-  background-color: #262d6bf5;
   z-index: 0;
 }
 
@@ -23,8 +22,8 @@
   align-items: center;
   gap: 12px;
   padding: 14px 28px;
-  background: linear-gradient(135deg, #F7D242 0%, #f2cf6d 100%);
-  color: #111827;
+  background: linear-gradient(135deg, rgb(65, 30, 5) 0%, #f2cf6d98 100%);
+  color: white;
   border: none;
   border-radius: 50px;
   font-family: 'Inter', sans-serif;
@@ -125,10 +124,10 @@
 
 .services-pill {
   display: inline-block;
-  background: linear-gradient(135deg, #F7D242 0%, #f2cf6d 100%);
-  color: #111827;
-  padding: 12px 32px;
-  border-radius: 50px;
+  background: linear-gradient(135deg, rgb(65, 30, 5) 0%, #f2cf6d62 100%);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 20px;
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
@@ -141,7 +140,7 @@
 
 .services-pill:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 35px rgba(247, 210, 66, 0.35);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.247);
   letter-spacing: 2.5px;
 }
 
@@ -281,7 +280,7 @@
 
 .service-card:hover {
   transform: translateY(-10px);
-  border-color: var(--card-color, #F7D242);
+  border-color: var(--card-color, rgb(65, 30, 5));
 }
 
 .service-card.visible:hover {
@@ -311,7 +310,7 @@
   left: 20px;
   width: 40px;
   height: 40px;
-  background: var(--card-color, #F7D242);
+  background: var(--card-color, rgb(65, 30, 5));
   color: white;
   border-radius: 50%;
   display: flex;
@@ -362,7 +361,7 @@
 }
 
 .feature-icon {
-  color: var(--card-color, #F7D242);
+  color: var(--card-color, rgb(65, 30, 5));
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -370,7 +369,7 @@
 .inquiry-btn {
   width: 50%;
   padding: 15px;
-  background: linear-gradient(90deg, var(--card-color, #0d134a) 0%, #f2cf6d 100%);
+  background: linear-gradient(90deg, var(--card-color, #0d134a) 0%, rgb(65, 30, 5) 100%);
   color: white;
   border: none;
   border-radius: 0.8rem;
@@ -440,7 +439,7 @@
 }
 
 .process-step:hover {
-  border-color: #F7D242;
+  border-color: rgb(65, 30, 5);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(247, 210, 66, 0.1);
 }
@@ -453,7 +452,7 @@
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 2rem;
-  color: #F7D242;
+  color: rgb(65, 30, 5);
   margin-bottom: 1rem;
 }
 

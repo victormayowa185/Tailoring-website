@@ -1,11 +1,13 @@
 /* ===== PROFESSIONAL FOOTER ===== */
 .footer {
   position: relative;
-  background: #0d134a;
+  background: rgb(65, 30, 5);
   color: #fff;
-  padding-top: 120px; /* SPACE FOR WAVE */
-font-family: mulish;
-  overflow: hidden; /* keep wave clean */
+  padding-top: 120px;
+  /* SPACE FOR WAVE */
+  font-family: mulish;
+  overflow: hidden;
+  /* keep wave clean */
 }
 
 /* SVG WAVE */
@@ -26,7 +28,8 @@ font-family: mulish;
   padding: 40px 20px;
   text-align: center;
   position: relative;
-  z-index: 2; /* above wave */
+  z-index: 2;
+  /* above wave */
   display: flex;
   flex-direction: column;
   gap: 20px;

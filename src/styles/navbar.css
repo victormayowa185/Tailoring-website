@@ -22,7 +22,7 @@
     padding: 12px 10%;
     background-color: transparent !important;
     /* transparent */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.753);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.466);
   }
 
   /* Social Icons - LEFT */
@@ -49,9 +49,10 @@
 
 
   .social-icon:hover {
-    background-color: #FFD700;
+    background-color: white;
+    color: black;
     border-color: grey;
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 
   /* Brand Logo - CENTER */
@@ -92,7 +93,7 @@
   }
 
   .search-icon:hover {
-    color: #FFD700;
+    transform: scale(1.2);
   }
 
   .contact-btn {
@@ -107,7 +108,8 @@
   }
 
   .contact-btn:hover {
-    background-color: #FFD700;
+    background-color: white;
+    color: black;
     transform: translateY(-1px);
 
   }
@@ -136,7 +138,7 @@
   }
 
   .nav-link:hover {
-    color: #f2cf6d;
+    color: white;
   }
 
   /* Underline animation */
@@ -148,7 +150,7 @@
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background-color: #f2cf6d;
+    background-color: white;
     transition: width 0.3s ease;
   }
 
@@ -158,7 +160,7 @@
 
   /* Active link */
   .nav-link.active {
-    color: #f2cf6d;
+    color: white;
   }
 
   .nav-link.active::after {

@@ -1,16 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 
-.services-top-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 160px;
-  background-color: rgb(16, 9, 62);
-  z-index: 0;
-}
-
 
 /* ===== GALLERY SECTION ===== */
 .gallery-section {
@@ -34,7 +24,7 @@
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 2.8rem;
-  color: #111827;
+  color: rgb(65, 30, 5);
   margin-bottom: 1.5rem;
   line-height: 1.1;
 }
@@ -43,7 +33,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 1.15rem;
-  color: #6b7280;
+  color: rgb(65, 30, 5);
   line-height: 1.7;
   max-width: 700px;
   margin: 0 auto;
@@ -66,7 +56,7 @@
   border-radius: 50px;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  color: #4b5563;
+  color: black;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.95rem;
@@ -74,16 +64,15 @@
 }
 
 .filter-btn:hover {
-  border-color: #FFD700;
-  color: #111827;
+  border-color: rgb(65, 30, 5);
+  color: black;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 215, 0, 0.1);
 }
 
 .filter-btn.active {
-  background: #FFD700;
-  border-color: #FFD700;
-  color: #111827;
+  background: rgb(65, 30, 5);
+  color: white;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
 }
