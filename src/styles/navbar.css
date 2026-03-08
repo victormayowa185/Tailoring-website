@@ -3,38 +3,38 @@
 @tailwind utilities;
 
 @layer components {
-
-
+  /* ========== NAVBAR CONTAINER ========== */
   .navbar-container {
-    top: 0;
-    width: 100%;
-    background-color: transparent;
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
+    background-color: transparent;
     box-shadow: none;
   }
 
-  /* ========== ROW 1: TOP BAR ========== */
+  /* ========== TOP BAR ========== */
   .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 10%;
+    /* Use clamp to ensure minimum padding on sides, scales with screen width but caps at large screens */
+    padding: 0.01rem clamp(3rem, 1vw, 1rem) !important;
     background-color: transparent !important;
-    /* transparent */
     border-bottom: 1px solid rgba(255, 255, 255, 0.466);
   }
 
   /* Social Icons - LEFT */
   .social-icons {
     display: flex;
-    gap: 15px;
+    gap: 0.9375rem; /* 15px */
     align-items: center;
   }
 
   .social-icon {
-    width: 32px;
-    height: 32px;
+    width: 2rem; /* 32px */
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,9 +44,8 @@
     border-radius: 50%;
     transition: all 0.3s ease;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
   }
-
 
   .social-icon:hover {
     background-color: white;
@@ -65,19 +64,16 @@
   }
 
   .logo-img {
-    height: 80px;
-    /* adjust size */
-    max-height: 80px;
-    /* prevent growing */
+    height: 5rem; /* 80px */
+    max-height: 5rem;
     width: auto;
-    /* maintain aspect ratio */
     object-fit: contain;
   }
 
   /* Nav Actions - RIGHT */
   .nav-actions {
     display: flex;
-    gap: 20px;
+    gap: 1.25rem; /* 20px */
     align-items: center;
   }
 
@@ -89,7 +85,7 @@
   }
 
   .search-icon {
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
   }
 
   .search-icon:hover {
@@ -98,43 +94,47 @@
 
   .contact-btn {
     background-color: transparent;
-    padding: 8px 20px;
+    padding: 0.5rem 1.25rem !important; 
     border-radius: 5px;
     font-weight: 500;
-    font-size: 14px;
-    font-family: mulish;
+    font-size: 0.875rem; /* 14px */
+    font-family: 'Mulish', sans-serif;
     transition: all 0.3s ease;
     border: 1px solid white;
+    white-space: nowrap;
   }
 
   .contact-btn:hover {
     background-color: white;
     color: black;
     transform: translateY(-1px);
-
   }
 
-  /* ========== ROW 2: MAIN NAVIGATION ========== */
+  /* ========== MAIN NAVIGATION (DESKTOP) ========== */
   .main-nav {
+
+    padding-top: 1rem !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    padding: 9px 10%;
+    gap: 2.5rem; /* 8px */
+    /* Same side padding as top-bar for consistency */
+    padding: 0.5625rem clamp(1rem, 5vw, 4rem);
     background-color: transparent !important;
-    /* transparent */
+    flex-wrap: wrap;
   }
 
   .nav-link {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
     font-weight: 500;
-    font-family: mulish;
+    font-family: 'Mulish', sans-serif;
     letter-spacing: 1px;
-    padding: 2px 25px;
+    padding: 0.125rem 1.5625rem; /* 2px 25px */
     transition: all 0.3s ease;
     position: relative;
+    white-space: nowrap;
   }
 
   .nav-link:hover {
@@ -154,40 +154,36 @@
     transition: width 0.3s ease;
   }
 
-  .nav-link:hover::after {
-    width: 80%;
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
   }
 
-  /* Active link */
   .nav-link.active {
     color: white;
-  }
-
-  .nav-link.active::after {
-    width: 80%;
   }
 
   /* Dot Divider */
   .nav-divider {
     color: white;
-    font-size: 15px;
-    margin: 0 5px;
+    font-size: 0.9375rem; /* 15px */
+    margin: 0 0.3125rem; /* 5px */
   }
 
-  /* ========== MOBILE RESPONSIVE ========== */
+  /* ========== MOBILE MENU BUTTON ========== */
   .mobile-menu-btn {
     display: none;
     flex-direction: column;
-    gap: 4px;
+    gap: 0.25rem; /* 4px */
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 0.3125rem; /* 5px */
   }
 
   .mobile-menu-btn span {
-    width: 25px;
-    height: 3px;
+    width: 1.5625rem; /* 25px */
+    height: 0.1875rem; /* 3px */
     background-color: #f2cf6d;
     border-radius: 2px;
     transition: all 0.3s ease;
@@ -205,12 +201,13 @@
     transform: rotate(-45deg) translate(7px, -6px);
   }
 
+  /* ========== MOBILE NAVIGATION (DROPDOWN) ========== */
   .mobile-nav {
     display: none;
     flex-direction: column;
     background-color: #1a1a1a;
-    padding: 20px;
-    gap: 15px;
+    padding: 1.25rem clamp(1rem, 5vw, 4rem); /* consistent side padding */
+    gap: 0.9375rem; /* 15px */
     border-top: 1px solid #3a3a3a;
   }
 
@@ -219,8 +216,10 @@
   }
 
   .mobile-nav .nav-link {
-    padding: 12px 0;
+    padding: 0.75rem 0; /* 12px 0 */
     border-bottom: 1px solid #2a2a2a;
+    font-size: 1rem;
+    white-space: normal;
   }
 
   .mobile-nav .nav-divider {
@@ -229,53 +228,150 @@
 
   .mobile-social {
     display: flex;
-    gap: 15px;
-    padding-top: 20px;
+    gap: 0.9375rem; /* 15px */
+    padding-top: 1.25rem; /* 20px */
     border-top: 1px solid #3a3a3a;
-    margin-top: 10px;
+    margin-top: 0.625rem; /* 10px */
   }
 
+  .mobile-social .social-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+
+  /* ========== RESPONSIVE FINE-TUNING ========== */
+
+  /* Tablets and below: adjust if needed */
+  @media (max-width: 1024px) {
+    .top-bar,
+    .main-nav,
+    .mobile-nav {
+      padding-left: clamp(1rem, 4vw, 3rem);
+      padding-right: clamp(1rem, 4vw, 3rem);
+    }
+  }
+
+  /* Mobile breakpoint */
   @media (max-width: 768px) {
     .top-bar {
-      padding: 12px 5%;
+      padding: 0.75rem clamp(0.75rem, 4vw, 2rem);
     }
 
     .logo-img {
-      height: 40px;
-      max-height: 40px;
+      height: 2.5rem; /* 40px */
+      max-height: 2.5rem;
     }
 
     .social-icons {
-      display: none;
+      display: none; /* hide desktop social icons on mobile */
     }
 
     .main-nav {
-      display: none;
+      display: none; /* hide desktop nav on mobile */
     }
 
     .mobile-menu-btn {
-      display: flex;
+      display: flex; /* show hamburger */
     }
 
     .nav-actions {
-      gap: 10px;
+      gap: 0.625rem; /* 10px */
     }
 
     .contact-btn {
-      padding: 6px 12px;
-      font-size: 12px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .logo-img {
-      height: 25px;
-      max-height: 25px;
+      padding: 0.375rem 0.75rem; /* 6px 12px */
+      font-size: 0.75rem; /* 12px */
     }
 
     .search-icon {
-      font-size: 18px;
+      font-size: 1.125rem; /* 18px */
+    }
+
+    .mobile-nav {
+      padding-left: clamp(0.75rem, 4vw, 2rem);
+      padding-right: clamp(0.75rem, 4vw, 2rem);
     }
   }
 
+  /* Small mobile devices */
+  @media (max-width: 480px) {
+    .logo-img {
+      height: 1.5625rem; /* 25px */
+      max-height: 1.5625rem;
+    }
+
+    .search-icon {
+      font-size: 1rem; /* 16px */
+    }
+
+    .contact-btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.6875rem; /* 11px */
+    }
+
+    .mobile-nav .nav-link {
+      font-size: 0.9375rem; /* 15px */
+    }
+
+    /* Ensure even on very small screens we have at least 0.5rem padding */
+    .top-bar,
+    .main-nav,
+    .mobile-nav {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+
+  /* Extra large screens */
+  @media (min-width: 1800px) {
+    .top-bar,
+    .main-nav,
+    .mobile-nav {
+      padding-left: 6rem; /* fixed large padding for very wide screens */
+      padding-right: 6rem;
+    }
+
+    .nav-link {
+      font-size: 1.125rem; /* 18px */
+      padding: 0.25rem 2rem;
+    }
+
+    .logo-img {
+      height: 6rem; /* 96px */
+      max-height: 6rem;
+    }
+
+    .social-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .contact-btn {
+      font-size: 1rem;
+      padding: 0.625rem 1.5rem;
+    }
+  }
+
+  /* Landscape orientation on small devices */
+  @media (max-height: 600px) and (orientation: landscape) and (max-width: 768px) {
+    .navbar-container {
+      position: fixed; /* better for landscape scrolling */
+    }
+
+    .top-bar {
+      padding: 0.5rem clamp(0.75rem, 4vw, 2rem);
+    }
+
+    .logo-img {
+      height: 2rem; /* 32px */
+      max-height: 2rem;
+    }
+
+    .mobile-nav {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+  }
 }
