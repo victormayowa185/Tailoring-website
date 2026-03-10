@@ -1,36 +1,244 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/hero.css";
 
 export default function Home() {
+  const navigate = useNavigate();
   const button1Ref = useRef(null);
   const button2Ref = useRef(null);
+  const canvasRef = useRef(null);
 
+
+  const shapesRef = useRef([]);
+  const animationFrameRef = useRef(null);
+  const lastMoveTimeRef = useRef(Date.now());
+  const hideTimeoutRef = useRef(null);
+  const isVisibleRef = useRef(false);        
+  const isFadingOutRef = useRef(false);      // whether we are in fade‑out
+  const fadeStartTimeRef = useRef(0);
+
+  // Configuration
+  const FREEZE_DELAY = 300;        
+  const HIDE_DELAY = 2000;          
+  const FADE_DURATION = 500;       
+  const SHAPE_COUNT = 10;          
+
+  // Tailoring tool symbols (easily recognisable)
+  const TOOLS = ["✂️", "📏", "🧵"];
+
+  // ---- Generate random shapes within canvas bounds ----
+  const generateShapes = (canvasWidth, canvasHeight) => {
+    const shapes = [];
+    for (let i = 0; i < SHAPE_COUNT; i++) {
+      shapes.push({
+        char: TOOLS[Math.floor(Math.random() * TOOLS.length)],
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.09,
+        size: 24 + Math.floor(Math.random() * 100), 
+        opacity: 0.29 + Math.random() * 0.2,
+      });
+    }
+    return shapes;
+  };
+
+  // ---- Canvas animation setup ----
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    // Initial shapes (will be used when first shown)
+    shapesRef.current = generateShapes(width, height);
+
+    // Animation loop
+    const animate = () => {
+      if (!canvas || !ctx) return;
+
+      ctx.clearRect(0, 0, width, height);
+
+      const now = Date.now();
+
+      // Visibility / fading logic
+      let visible = isVisibleRef.current;
+      let fading = isFadingOutRef.current;
+
+      // Handle fade‑out
+      let globalAlpha = 1;
+      if (fading) {
+        const elapsed = now - fadeStartTimeRef.current;
+        if (elapsed >= FADE_DURATION) {
+          // Fade finished – hide completely
+          isVisibleRef.current = false;
+          isFadingOutRef.current = false;
+          visible = false;
+          fading = false;
+        } else {
+          globalAlpha = 1 - elapsed / FADE_DURATION;
+        }
+      }
+
+      // If not visible at all, just request next frame and exit
+      if (!visible) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      // Movement update: only if not fading and mouse moved recently
+      const timeSinceLastMove = now - lastMoveTimeRef.current;
+      if (!fading && timeSinceLastMove < FREEZE_DELAY) {
+        shapesRef.current.forEach((shape) => {
+          shape.x += shape.vx;
+          shape.y += shape.vy;
+          // Wrap around edges
+          if (shape.x < 0) shape.x = width;
+          if (shape.x > width) shape.x = 0;
+          if (shape.y < 0) shape.y = height;
+          if (shape.y > height) shape.y = 0;
+          shape.rotation += shape.rotSpeed;
+        });
+      }
+
+      // Draw all shapes
+      ctx.save();
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      shapesRef.current.forEach((shape) => {
+        ctx.save();
+        ctx.translate(shape.x, shape.y);
+        ctx.rotate(shape.rotation);
+        ctx.font = `${shape.size}px 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif`;
+        ctx.globalAlpha = shape.opacity * globalAlpha;
+        ctx.fillStyle = "#ffffff"; // white – will be tinted by overlay
+        ctx.fillText(shape.char, 0, 0);
+        ctx.restore();
+      });
+      ctx.restore();
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    // Start animation
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    // Handle window resize
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      shapesRef.current = generateShapes(width, height);
+    };
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      window.removeEventListener("resize", handleResize);
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+      }
+    };
+  }, []); // Run once on mount
+
+  // ---- Mouse event handlers for the hero container ----
+  const handleHeroMouseEnter = () => {
+    // Clear any pending hide timeout
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
+    }
+
+    // Cancel fade‑out if it was happening
+    isFadingOutRef.current = false;
+
+    // Regenerate shapes for a fresh look each time
+    const canvas = canvasRef.current;
+    if (canvas) {
+      shapesRef.current = generateShapes(canvas.width, canvas.height);
+    }
+    isVisibleRef.current = true;
+    lastMoveTimeRef.current = Date.now(); // reset idle timer
+  };
+
+  const handleHeroMouseMove = () => {
+    // Update last move time
+    lastMoveTimeRef.current = Date.now();
+
+    // If shapes are not visible, make them visible (should already be from enter)
+    if (!isVisibleRef.current) {
+      isVisibleRef.current = true;
+      isFadingOutRef.current = false;
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+        hideTimeoutRef.current = null;
+      }
+    }
+
+    // Reset the hide timeout: after HIDE_DELAY of inactivity, fade out
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+    }
+    hideTimeoutRef.current = setTimeout(() => {
+      if (isVisibleRef.current && !isFadingOutRef.current) {
+        isFadingOutRef.current = true;
+        fadeStartTimeRef.current = Date.now();
+      }
+      hideTimeoutRef.current = null;
+    }, HIDE_DELAY);
+  };
+
+  const handleHeroMouseLeave = () => {
+    // Clear any pending hide timeout
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
+    }
+
+    // Immediately start fade‑out
+    if (isVisibleRef.current) {
+      isFadingOutRef.current = true;
+      fadeStartTimeRef.current = Date.now();
+    }
+  };
+
+  // ---- Button move effects (unchanged) ----
   const handleMouseMove = (e, ref) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const x = e.clientX - rect.left; // x position within the element
-    const y = e.clientY - rect.top; // y position within the element
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const offsetX = (x - centerX) / centerX; // range -1 to 1
+    const offsetX = (x - centerX) / centerX;
     const offsetY = (y - centerY) / centerY;
 
-    // Limit translation to max 8px
-    const moveX = offsetX * 8;
-    const moveY = offsetY * 8;
+    const moveX = offsetX * 20;
+    const moveY = offsetY * 20;
 
     ref.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
   };
 
-  const handleMouseLeave = (ref) => {
+  const handleMouseLeaveButton = (ref) => {
     if (!ref.current) return;
     ref.current.style.transform = "translate(0, 0)";
   };
 
   return (
     <div className="home-root">
-      {/* HERO SECTION WITH VIDEO */}
-      <div className="blur">
+      {/* HERO SECTION WITH VIDEO + CANVAS */}
+      <div
+        className="blur"
+        onMouseEnter={handleHeroMouseEnter}
+        onMouseMove={handleHeroMouseMove}
+        onMouseLeave={handleHeroMouseLeave}
+      >
         {/* Video Background */}
         <video autoPlay muted loop playsInline className="video-background">
           <source src="video.mp4" type="video/mp4" />
@@ -51,11 +259,14 @@ export default function Home() {
           />
         </video>
 
-        {/* Video overlay */}
+        {/* Canvas for floating shapes (above video, under overlay) */}
+        <canvas ref={canvasRef} className="floating-shapes-canvas" />
+
+        {/* Dark overlay */}
         <div className="video-overlay"></div>
 
+        {/* Hero content (above everything) */}
         <div className="blur-content">
-          {/* HERO TEXT */}
           <div className="heroc">
             <div className="hero-line"></div>
             <h1 className="hero">
@@ -74,22 +285,24 @@ export default function Home() {
             </div>
 
             <div className="cta">
-              {/* BUTTON 1 with mouse move effect */}
+              {/* BUTTON 1 */}
               <button
                 ref={button1Ref}
                 className="button"
+                onClick={() => navigate("/contact")}
                 onMouseMove={(e) => handleMouseMove(e, button1Ref)}
-                onMouseLeave={() => handleMouseLeave(button1Ref)}
+                onMouseLeave={() => handleMouseLeaveButton(button1Ref)}
               >
                 Make Appointment
               </button>
 
-              {/* BUTTON 2 with mouse move effect */}
+              {/* BUTTON 2 */}
               <button
                 ref={button2Ref}
                 className="button"
+                onClick={() => navigate("/gallery")}
                 onMouseMove={(e) => handleMouseMove(e, button2Ref)}
-                onMouseLeave={() => handleMouseLeave(button2Ref)}
+                onMouseLeave={() => handleMouseLeaveButton(button2Ref)}
               >
                 View Gallery
               </button>

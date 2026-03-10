@@ -130,8 +130,12 @@ const Services = () => {
     });
   };
 
-  // Scroll animation effect
+  // Scroll animation effect - fixed to avoid ref warning
   useEffect(() => {
+    // Capture current ref values to use in cleanup
+    const currentCards = serviceCardsRef.current;
+    const currentSteps = processStepsRef.current;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -147,24 +151,25 @@ const Services = () => {
     );
 
     // Observe service cards
-    serviceCardsRef.current.forEach(card => {
+    currentCards.forEach(card => {
       if (card) observer.observe(card);
     });
 
     // Observe process steps
-    processStepsRef.current.forEach(step => {
+    currentSteps.forEach(step => {
       if (step) observer.observe(step);
     });
 
+    // Cleanup using captured arrays
     return () => {
-      serviceCardsRef.current.forEach(card => {
+      currentCards.forEach(card => {
         if (card) observer.unobserve(card);
       });
-      processStepsRef.current.forEach(step => {
+      currentSteps.forEach(step => {
         if (step) observer.unobserve(step);
       });
     };
-  }, []);
+  }, []); // Empty dependency array means this runs once on mount/unmount
 
   return (
     <section className="services-section">

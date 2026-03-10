@@ -1,4 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { IoIosContact } from "react-icons/io";
+import { MdOutlineAttachEmail } from "react-icons/md";
+import { MdPhoneCallback } from "react-icons/md";
+import { TbTargetArrow } from "react-icons/tb";
+import { MdOutlineNoteAlt } from "react-icons/md";
+import { FaMessage } from "react-icons/fa6";
+import { RiPencilRulerLine } from "react-icons/ri";
+import { IoColorWand } from "react-icons/io5";
+import { RiScissorsCutLine } from "react-icons/ri";
+import { IoPinOutline } from "react-icons/io5";
+import { LuAlarmClockPlus } from "react-icons/lu";
 import '../styles/contact.css';
 
 const Contact = () => {
@@ -146,7 +157,7 @@ const Contact = () => {
                                 <form onSubmit={handleSubmit} className="contact-form">
                                     <div className="form-group">
                                         <label htmlFor="name">
-                                            <span className="label-icon">👤</span>
+                                            <IoIosContact />
                                             Full Name
                                         </label>
                                         <input
@@ -163,7 +174,7 @@ const Contact = () => {
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label htmlFor="email">
-                                                <span className="label-icon">✉️</span>
+                                                <MdOutlineAttachEmail />
                                                 Email Address
                                             </label>
                                             <input
@@ -179,7 +190,7 @@ const Contact = () => {
 
                                         <div className="form-group">
                                             <label htmlFor="phone">
-                                                <span className="label-icon">📱</span>
+                                                <MdPhoneCallback />
                                                 Phone Number
                                             </label>
                                             <input
@@ -195,7 +206,7 @@ const Contact = () => {
 
                                     <div className="form-group">
                                         <label htmlFor="service">
-                                            <span className="label-icon">🎯</span>
+                                            <TbTargetArrow />
                                             Service Interested In
                                         </label>
                                         <select
@@ -214,7 +225,7 @@ const Contact = () => {
 
                                     <div className="form-group">
                                         <label htmlFor="message">
-                                            <span className="label-icon">💬</span>
+                                            <MdOutlineNoteAlt />
                                             Your Vision & Requirements
                                         </label>
                                         <textarea
@@ -258,7 +269,7 @@ const Contact = () => {
                                     className="info-card"
                                 >
                                     <div className="info-icon">
-                                        {index === 0 ? '📍' : '⏰'}
+                                        {index === 0 ? <IoPinOutline /> : <LuAlarmClockPlus />}
                                     </div>
                                     <div className="info-content">
                                         <h4>{index === 0 ? 'Visit Our Atelier' : 'Working Hours'}</h4>
@@ -299,10 +310,10 @@ const Contact = () => {
                             <h3 className="steps-title">Our Consultation Process</h3>
                             <div className="steps-list">
                                 {[
-                                    { icon: '💬', step: 'Initial Discussion', desc: 'Style & vision consultation' },
-                                    { icon: '📏', step: 'Precision Measuring', desc: '40+ body measurements' },
-                                    { icon: '🎨', step: 'Design Selection', desc: 'Fabric & style choices' },
-                                    { icon: '✂️', step: 'Crafting Begins', desc: 'Master tailor takes over' }
+                                    { icon: <FaMessage />, step: 'Initial Discussion', desc: 'Style & vision consultation' },
+                                    { icon: <RiPencilRulerLine />, step: 'Precision Measuring', desc: '40+ body measurements' },
+                                    { icon: <IoColorWand />, step: 'Design Selection', desc: 'Fabric & style choices' },
+                                    { icon: <RiScissorsCutLine />, step: 'Crafting Begins', desc: 'Master tailor takes over' }
                                 ].map((item, index) => (
                                     <div
                                         key={index}

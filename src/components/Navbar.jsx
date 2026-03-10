@@ -44,7 +44,7 @@ export default function Navbar() {
         </div>
 
         <div className="brand-logo">
-          <img src="/logo.png" alt="Elegance Logo" className="logo-img" />
+          <img src="/logo1.png" alt="Elegance Logo" className="logo-img" />
         </div>
 
         <div className="nav-actions">
