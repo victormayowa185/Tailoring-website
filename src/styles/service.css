@@ -1,96 +1,13 @@
-.services-top-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 160px;
-  z-index: 0;
-}
-
-
-
-.stack-controls {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-}
-
-/* Shuffle Button */
-.shuffle-btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, rgb(65, 30, 5) 0%, #f2cf6d98 100%);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 8px 25px rgba(247, 210, 66, 0.3);
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-/* Button Hover Effect */
-.shuffle-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #f2cf6d 0%, #F7D242 100%);
-  transition: left 0.6s ease;
-  z-index: -1;
-  border-radius: 50px;
-}
-
-.shuffle-btn:hover::before {
-  left: 0;
-}
-
-.shuffle-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 35px rgba(247, 210, 66, 0.4);
-  letter-spacing: 1px;
-}
-
-.shuffle-btn:active {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(247, 210, 66, 0.3);
-}
-
-/* Shuffle Icon */
-.shuffle-icon {
-  font-size: 1.4rem;
-  font-weight: bold;
-  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  display: inline-block;
-}
-
-.shuffle-btn:hover .shuffle-icon {
-  transform: rotate(180deg) scale(1.1);
-}
-
-
-/* ===== SERVICES SECTION ===== */
+/* ===== SERVICES SECTION – MASTER STYLES ===== */
 .services-section {
   position: relative;
   min-height: 100vh;
   padding: 180px 90px 80px;
   background-color: whitesmoke;
-  font-family: mulish;
+  font-family: 'Mulish', sans-serif;
 }
 
-/* Top accent */
+/* Top accent bar */
 .services-top-accent {
   position: absolute;
   top: 0;
@@ -101,7 +18,7 @@
   z-index: 0;
 }
 
-/* Container */
+/* Main container */
 .services-container {
   position: relative;
   z-index: 2;
@@ -116,7 +33,6 @@
 
 /* ===== HEADER ===== */
 .services-header {
-  font-family: mulish;
   text-align: center;
   margin-bottom: 4rem;
   padding: 0 1rem;
@@ -128,7 +44,6 @@
   color: white;
   padding: 12px 22px;
   border-radius: 20px;
-  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   margin-bottom: 2rem;
@@ -146,7 +61,6 @@
 }
 
 .services-header h1 {
-  font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 3.5rem;
   color: #111827;
@@ -156,7 +70,6 @@
 }
 
 .services-header p {
-  font-family: mulish;
   font-weight: 400;
   font-size: 1.2rem;
   color: #6b7280;
@@ -173,7 +86,7 @@
   margin-bottom: 80px;
 }
 
-/* ===== STACKED IMAGES ===== */
+/* ===== STACKED IMAGES (LEFT COLUMN) ===== */
 .stacked-images {
   position: relative;
 }
@@ -232,6 +145,77 @@
   transform: rotate(0deg) translateY(-5px);
 }
 
+/* Stack controls */
+.stack-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+/* Shuffle Button */
+.shuffle-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, rgb(65, 30, 5) 0%, #f2cf6d98 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 25px rgba(247, 210, 66, 0.3);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.shuffle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f2cf6d 0%, #F7D242 100%);
+  transition: left 0.6s ease;
+  z-index: -1;
+  border-radius: 50px;
+}
+
+.shuffle-btn:hover::before {
+  left: 0;
+}
+
+.shuffle-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(247, 210, 66, 0.4);
+  letter-spacing: 1px;
+}
+
+.shuffle-btn:active {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(247, 210, 66, 0.3);
+}
+
+.shuffle-icon {
+  font-size: 1.4rem;
+  font-weight: bold;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  display: inline-block;
+}
+
+.shuffle-btn:hover .shuffle-icon {
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* Stack caption */
 .stack-caption {
   text-align: center;
   padding: 1.5rem;
@@ -241,7 +225,6 @@
 }
 
 .stack-caption h3 {
-  font-family: mulish;
   font-weight: 600;
   font-size: 1.5rem;
   color: #111827;
@@ -249,13 +232,11 @@
 }
 
 .stack-caption p {
-  font-family: mulish;
-  font-weight: 400;
   color: #6b7280;
   font-size: 0.95rem;
 }
 
-/* ===== SERVICES CARDS ===== */
+/* ===== SERVICES CARDS (RIGHT COLUMN) ===== */
 .services-cards {
   display: flex;
   flex-direction: column;
@@ -328,7 +309,6 @@
 }
 
 .card-content h3 {
-  font-family: mulish;
   font-weight: 600;
   font-size: 1.8rem;
   color: #111827;
@@ -336,8 +316,6 @@
 }
 
 .card-description {
-  font-family: mulish;
-  font-weight: 400;
   color: #6b7280;
   line-height: 1.7;
   margin-bottom: 1.5rem;
@@ -351,7 +329,6 @@
 }
 
 .card-features li {
-  font-family: mulish;
   font-weight: 500;
   color: #374151;
   margin-bottom: 0.8rem;
@@ -374,7 +351,6 @@
   color: white;
   border: none;
   border-radius: 0.8rem;
-  font-family: mulish;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
@@ -458,7 +434,6 @@
 }
 
 .step-content h4 {
-  font-family: mulish;
   font-weight: 600;
   color: #111827;
   margin-bottom: 0.5rem;
@@ -466,103 +441,408 @@
 }
 
 .step-content p {
-  font-family: mulish;
-  font-weight: 400;
   color: #6b7280;
   font-size: 0.9rem;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 1200px) {
-  .feature-grid {
-    gap: 40px;
-  }
+/* ========== RESPONSIVE BREAKPOINTS – HARCODED ========== */
 
+/* ----- 1400px and above (Extra large screens) ----- */
+@media (min-width: 1400px) {
+  .services-section {
+    padding: 200px 120px 100px;
+  }
+  .services-container {
+    padding: 50px;
+  }
   .services-header h1 {
+    font-size: 4rem;
+  }
+  .services-header p {
+    font-size: 1.3rem;
+    max-width: 800px;
+  }
+  .feature-grid {
+    gap: 100px;
+    margin-bottom: 90px;
+  }
+  .image-stack {
+    height: 550px;
+  }
+  .stack-caption h3 {
+    font-size: 1.8rem;
+  }
+  .card-content h3 {
+    font-size: 2rem;
+  }
+  .card-description {
+    font-size: 1.1rem;
+  }
+  .process-title {
     font-size: 3rem;
   }
-
   .process-steps {
-    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
 }
 
-@media (max-width: 992px) {
-  .feature-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .image-stack {
-    height: 400px;
-    max-width: 500px;
-    margin: 0 auto 2rem;
-  }
-
-  .services-container {
-    padding: 30px;
-  }
-}
-
-@media (max-width: 768px) {
+/* ----- 1200px to 1399px (Large desktops) ----- */
+@media (min-width: 1200px) and (max-width: 1399px) {
   .services-section {
-    padding: 70px 15px 60px;
+    padding: 180px 80px 80px;
   }
-
+  .services-container {
+    padding: 40px;
+  }
   .services-header h1 {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
   }
+  .services-header p {
+    font-size: 1.15rem;
+  }
+  .feature-grid {
+    gap: 70px;
+  }
+  .image-stack {
+    height: 480px;
+  }
+  .stack-caption h3 {
+    font-size: 1.4rem;
+  }
+  .card-content h3 {
+    font-size: 1.7rem;
+  }
+  .process-steps {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+  }
+}
 
+/* ----- 992px to 1199px (Medium desktops / tablets landscape) ----- */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .services-section {
+    padding: 150px 60px 70px;
+  }
+  .services-container {
+    padding: 35px;
+  }
+  .services-header h1 {
+    font-size: 2.8rem;
+  }
   .services-header p {
     font-size: 1.1rem;
   }
-
-  .services-container {
-    padding: 25px 20px;
-    border-radius: 1.5rem;
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    margin-bottom: 70px;
   }
-
+  .image-stack {
+    height: 450px;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
   .process-steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .card-content h3 {
-    font-size: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
 
-@media (max-width: 576px) {
+/* ----- 768px to 991px (Tablets portrait) ----- */
+@media (min-width: 768px) and (max-width: 991px) {
   .services-section {
-    padding: 60px 15px 60px;
+    padding: 120px 40px 60px;
   }
+  .services-container {
+    padding: 30px;
+    border-radius: 1.5rem;
+  }
+  .services-header h1 {
+    font-size: 2.5rem;
+  }
+  .services-header p {
+    font-size: 1rem;
+    max-width: 600px;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+  .image-stack {
+    height: 400px;
+    max-width: 550px;
+    margin: 0 auto 2rem;
+  }
+  .stack-caption h3 {
+    font-size: 1.3rem;
+  }
+  .card-content h3 {
+    font-size: 1.6rem;
+  }
+  .card-description {
+    font-size: 0.95rem;
+  }
+  .card-features li {
+    font-size: 0.9rem;
+  }
+  .inquiry-btn {
+    width: 60%;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+  .process-section {
+    padding: 3rem 1.5rem;
+  }
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .process-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
 
-
+/* ----- 576px to 767px (Large mobile) ----- */
+@media (min-width: 576px) and (max-width: 767px) {
+  .services-section {
+    padding: 100px 25px 50px;
+  }
+  .services-container {
+    padding: 25px 20px;
+    border-radius: 1.2rem;
+  }
+  .services-header {
+    margin-bottom: 2.5rem;
+  }
+  .services-pill {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
   .services-header h1 {
     font-size: 2rem;
   }
-
-  .services-pill {
-    padding: 10px 24px;
-    font-size: 0.8rem;
+  .services-header p {
+    font-size: 0.95rem;
+    max-width: 100%;
+    padding: 0 0.5rem;
   }
-
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
   .image-stack {
     height: 350px;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
   }
-
   .stack-img {
     border-radius: 0.8rem;
   }
-
+  .top-img {
+    height: 60%;
+  }
+  .middle-img {
+    height: 55%;
+    top: 20%;
+  }
+  .bottom-img {
+    height: 50%;
+    left: 5%;
+  }
+  .shuffle-btn {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+  }
+  .stack-caption {
+    padding: 1rem;
+  }
+  .stack-caption h3 {
+    font-size: 1.2rem;
+  }
+  .stack-caption p {
+    font-size: 0.85rem;
+  }
+  .services-cards {
+    gap: 20px;
+  }
+  .card-image {
+    height: 180px;
+  }
+  .card-content {
+    padding: 1.5rem;
+  }
+  .card-content h3 {
+    font-size: 1.4rem;
+  }
+  .card-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .card-features li {
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+  .feature-icon {
+    font-size: 1rem;
+  }
+  .inquiry-btn {
+    width: 70%;
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+  .process-section {
+    padding: 2rem 1rem;
+  }
   .process-steps {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
-
+  .process-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
   .process-step {
     padding: 1.2rem;
   }
+  .step-number {
+    font-size: 1.8rem;
+  }
+  .step-content h4 {
+    font-size: 1rem;
+  }
+  .step-content p {
+    font-size: 0.85rem;
+  }
+}
 
+/* ----- ≤575px (Small mobile) ----- */
+@media (max-width: 575px) {
+  .services-section {
+    padding: 80px 15px 40px;
+  }
+  .services-container {
+    padding: 20px 15px;
+    border-radius: 1rem;
+  }
+  .services-header {
+    margin-bottom: 2rem;
+  }
+  .services-pill {
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .services-header h1 {
+    font-size: 1.8rem;
+  }
+  .services-header p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  .image-stack {
+    height: 280px;
+    margin-bottom: 1rem;
+  }
+  .top-img {
+    height: 55%;
+  }
+  .middle-img {
+    height: 50%;
+    top: 20%;
+  }
+  .bottom-img {
+    height: 45%;
+    left: 5%;
+  }
+  .shuffle-btn {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+  .shuffle-icon {
+    font-size: 1.2rem;
+  }
+  .stack-caption {
+    padding: 0.8rem;
+  }
+  .stack-caption h3 {
+    font-size: 1.1rem;
+  }
+  .stack-caption p {
+    font-size: 0.8rem;
+  }
+  .services-cards {
+    gap: 15px;
+  }
+  .card-image {
+    height: 160px;
+  }
+  .card-badge {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    top: 12px;
+    left: 12px;
+  }
   .card-content {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+  .card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .card-description {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+  .card-features li {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    gap: 8px;
+  }
+  .feature-icon {
+    font-size: 0.9rem;
+  }
+  .inquiry-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+  .btn-icon {
+    font-size: 1rem;
+  }
+  .process-section {
+    padding: 1.5rem 1rem;
+  }
+  .process-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .process-step {
+    padding: 1rem;
+  }
+  .step-number {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .step-content h4 {
+    font-size: 0.95rem;
+  }
+  .step-content p {
+    font-size: 0.8rem;
   }
 }
