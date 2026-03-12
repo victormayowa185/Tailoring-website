@@ -11,8 +11,7 @@ export default function Navbar() {
   useEffect(() => {
     // Remove all page classes
     document.body.classList.remove('page-home', 'page-about', 'page-services', 'page-other');
-    
-    // Add class based on current page
+
     if (location.pathname === '/') {
       document.body.classList.add('page-home');
     } else if (location.pathname === '/about') {

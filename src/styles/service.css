@@ -5,6 +5,7 @@
   padding: 180px 90px 80px;
   background-color: whitesmoke;
   font-family: 'Mulish', sans-serif;
+    animation: fadeInUp 0.8s ease forwards;
 }
 
 /* Top accent bar */

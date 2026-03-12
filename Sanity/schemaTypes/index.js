@@ -1,4 +1,3 @@
-// Sanity/schemaTypes/index.ts
 import category from './category'
 import galleryImage from './galleryImage'
 import service from './service'

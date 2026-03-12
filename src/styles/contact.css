@@ -18,6 +18,7 @@
     background: whitesmoke;
     font-family: 'Mulish', sans-serif;
     overflow: hidden;
+    animation: fadeInUp 0.8s ease forwards;
 }
 
 .contact-bg-pattern {

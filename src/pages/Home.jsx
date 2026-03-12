@@ -1,6 +1,13 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/hero.css";
+
+// Static constants moved outside component so they never change
+const TOOLS = ["✂️", "📏", "🧵"];
+const FREEZE_DELAY = 300;
+const HIDE_DELAY = 2000;
+const FADE_DURATION = 500;
+const SHAPE_COUNT = 10;
 
 export default function Home() {
   const navigate = useNavigate();
@@ -8,26 +15,16 @@ export default function Home() {
   const button2Ref = useRef(null);
   const canvasRef = useRef(null);
 
-
   const shapesRef = useRef([]);
   const animationFrameRef = useRef(null);
-  const lastMoveTimeRef = useRef(Date.now());
+  const lastMoveTimeRef = useRef(null); // initially null, set in effect
   const hideTimeoutRef = useRef(null);
-  const isVisibleRef = useRef(false);        
-  const isFadingOutRef = useRef(false);      // whether we are in fade‑out
+  const isVisibleRef = useRef(false);
+  const isFadingOutRef = useRef(false);
   const fadeStartTimeRef = useRef(0);
 
-  // Configuration
-  const FREEZE_DELAY = 300;        
-  const HIDE_DELAY = 2000;          
-  const FADE_DURATION = 500;       
-  const SHAPE_COUNT = 10;          
-
-  // Tailoring tool symbols (easily recognisable)
-  const TOOLS = ["✂️", "📏", "🧵"];
-
   // ---- Generate random shapes within canvas bounds ----
-  const generateShapes = (canvasWidth, canvasHeight) => {
+  const generateShapes = useCallback((canvasWidth, canvasHeight) => {
     const shapes = [];
     for (let i = 0; i < SHAPE_COUNT; i++) {
       shapes.push({
@@ -38,12 +35,12 @@ export default function Home() {
         vy: (Math.random() - 0.5) * 0.5,
         rotation: Math.random() * Math.PI * 2,
         rotSpeed: (Math.random() - 0.5) * 0.09,
-        size: 24 + Math.floor(Math.random() * 100), 
+        size: 24 + Math.floor(Math.random() * 100),
         opacity: 0.29 + Math.random() * 0.2,
       });
     }
     return shapes;
-  };
+  }, []); // No dependencies – all used values are now outside the component
 
   // ---- Canvas animation setup ----
   useEffect(() => {
@@ -54,8 +51,9 @@ export default function Home() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Initial shapes (will be used when first shown)
+    // Initial shapes
     shapesRef.current = generateShapes(width, height);
+    lastMoveTimeRef.current = Date.now(); // ✅ set after mount
 
     // Animation loop
     const animate = () => {
@@ -65,11 +63,9 @@ export default function Home() {
 
       const now = Date.now();
 
-      // Visibility / fading logic
       let visible = isVisibleRef.current;
       let fading = isFadingOutRef.current;
 
-      // Handle fade‑out
       let globalAlpha = 1;
       if (fading) {
         const elapsed = now - fadeStartTimeRef.current;
@@ -115,7 +111,7 @@ export default function Home() {
         ctx.rotate(shape.rotation);
         ctx.font = `${shape.size}px 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif`;
         ctx.globalAlpha = shape.opacity * globalAlpha;
-        ctx.fillStyle = "#ffffff"; // white – will be tinted by overlay
+        ctx.fillStyle = "#ffffff";
         ctx.fillText(shape.char, 0, 0);
         ctx.restore();
       });
@@ -145,7 +141,7 @@ export default function Home() {
         clearTimeout(hideTimeoutRef.current);
       }
     };
-  }, []); // Run once on mount
+  }, [generateShapes]); // generateShapes is stable, so effect runs once
 
   // ---- Mouse event handlers for the hero container ----
   const handleHeroMouseEnter = () => {
