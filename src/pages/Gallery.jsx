@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { client, urlFor } from '../sanity/client'; 
+import { client, urlFor } from '../sanity/client';
 import '../styles/gallery.css';
 
 const Gallery = () => {
@@ -10,11 +10,12 @@ const Gallery = () => {
     const [galleryImages, setGalleryImages] = useState([]);
     const [filteredImages, setFilteredImages] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    // Remove error state or keep it but don't render it
+    const [fetchError, setFetchError] = useState(null);
 
-    // Hide footer when loading or error is active
+    // Hide footer when loading
     useEffect(() => {
-        if (loading || error) {
+        if (loading) {
             document.body.classList.add('hide-footer');
         } else {
             document.body.classList.remove('hide-footer');
@@ -22,12 +23,13 @@ const Gallery = () => {
         return () => {
             document.body.classList.remove('hide-footer');
         };
-    }, [loading, error]);
+    }, [loading]);
 
     // Fetch categories and gallery images from Sanity
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
+            setFetchError(null);
             try {
                 const categoriesQuery = `*[_type == "category"]{
                     _id,
@@ -64,8 +66,12 @@ const Gallery = () => {
                 setGalleryImages(fetchedImages);
                 setFilteredImages(fetchedImages);
             } catch (err) {
-                console.error('Error fetching gallery data:', err);
-                setError('Failed to load gallery. Please try again later.');
+                console.error('Error fetching gallery data (suppressed in UI):', err);
+                // Keep images empty so the UI shows nothing, but no error banner
+                setGalleryImages([]);
+                setFilteredImages([]);
+                // Optionally set a state that you can use to show a subtle hint (like "No images yet")
+                // setFetchError('Could not load images. Please check your connection.');
             } finally {
                 setLoading(false);
             }
@@ -120,17 +126,15 @@ const Gallery = () => {
     }, [selectedImage, closeLightbox, goToPrev, goToNext]);
 
     return (
-        <section className={`gallery-section ${loading || error ? 'loading-state' : ''}`}>
+        <section className={`gallery-section ${loading ? 'loading-state' : ''}`}>
             {loading && (
                 <div className="gallery-loading">Loading gallery...</div>
             )}
-            {error && (
-                <div className="gallery-error">{error}</div>
-            )}
-            {!loading && !error && (
+            {/* Removed the error display – now you always see the UI */}
+            {!loading && (
                 <>
                     <div className="services-top-accent"></div>
-                    
+
                     <div className="gallery-header">
                         <h1>Tailoring Gallery</h1>
                         <p>
@@ -151,6 +155,13 @@ const Gallery = () => {
                             </button>
                         ))}
                     </div>
+
+                    {/* Optional: show a message if there are no images */}
+                    {filteredImages.length === 0 && (
+                        <div className="gallery-empty">
+                            <p>No images yet. Check back soon!</p>
+                        </div>
+                    )}
 
                     <div className="masonry-grid">
                         {filteredImages.map((image) => {
